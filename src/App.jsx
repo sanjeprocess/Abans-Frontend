@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PreForm from "./PreForm";
-import ApplicationForm from "./form/ApplicationForm";
+import RegistrationPage from "./RegistrationPage";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -9,7 +9,7 @@ function App() {
     return <PreForm onVerified={(data) => setUserData(data)} />;
   }
 
-  return <ApplicationForm preFilledData={userData} />;
+  return <RegistrationPage preFilledData={userData} />;
 }
 
 export default App;
