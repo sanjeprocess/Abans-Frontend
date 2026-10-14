@@ -1,0 +1,17 @@
+/* ── Theme CSS – brand + neutral design tokens ─────────────────────────── */
+/* --brand-fixed never changes regardless of colour scheme.                 */
+
+:root {
+  /* Brand (fixed – never overridden) */
+  --brand-fixed: #1877f2;
+  --brand-fixed-hover: #1464d8;
+  --brand-fixed-light: rgba(24, 119, 242, 0.10);
+  --brand-fixed-focus: rgba(24, 119, 242, 0.25);
+
+  /* Neutral surface tokens (light mode) */
+  --bg-normal:  #f0f2f5;
+  --card:       #ffffff;
+  --text:       #1c1e21;
+  --muted:      #65676b;
+  --border:     #dce0e6;
+}

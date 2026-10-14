@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./PreForm.css";
+import { setPrivacyGuardEnabled } from "./privacyGuard";
+
+const GUARD_ON_FIRST_FORM = false;
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL !== undefined && import.meta.env.VITE_API_BASE_URL !== "")
   ? import.meta.env.VITE_API_BASE_URL
@@ -27,6 +30,10 @@ function PreForm({ onVerified }) {
     }
     return () => clearInterval(timer);
   }, [resendTimer]);
+
+  useEffect(() => {
+    setPrivacyGuardEnabled(step === "otp" || GUARD_ON_FIRST_FORM);
+  }, [step]);
 
   // ── Step 1: Submit pre-registration → server generates OTP ─────────────────
   const handleSendOtp = async (e) => {

@@ -1,15 +1,27 @@
 import React, { useState } from "react";
+import "./theme.css";
 import PreForm from "./PreForm";
-import RegistrationPage from "./RegistrationPage";
+import TermsAndConditions from "./components/TermsAndConditions";
 
+/**
+ * App flow:
+ *   1. PreForm            – applicant details + OTP verification
+ *   2. TermsAndConditions – Initial Loan Origination T&Cs (scroll-gated)
+ *
+ * Privacy blur is handled globally by privacyGuard.js before React renders.
+ */
 function App() {
-  const [userData, setUserData] = useState(null);
+  const [stage, setStage] = useState("preform");
 
-  if (!userData) {
-    return <PreForm onVerified={(data) => setUserData(data)} />;
+  if (stage === "preform") {
+    return (
+      <PreForm
+        onVerified={() => setStage("terms")}
+      />
+    );
   }
 
-  return <RegistrationPage preFilledData={userData} />;
+  return <TermsAndConditions onAgree={() => setStage("terms")} />;
 }
 
 export default App;

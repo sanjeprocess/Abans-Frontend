@@ -32,3 +32,17 @@ body {
 * {
   box-sizing: border-box;
 }
+
+html.privacy-hidden body > #root {
+  filter: blur(30px) brightness(.6) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  transition: none !important;
+}
+html.privacy-hidden body::after {
+  content: "🔒 Please maximize your browser window to continue";
+  position: fixed; inset: 0; z-index: 99999;
+  display: grid; place-items: center;
+  color: #fff; font: 600 1.1rem system-ui, sans-serif;
+  background: rgba(15, 23, 42, .55);
+}
